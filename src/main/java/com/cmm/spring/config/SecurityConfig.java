@@ -24,6 +24,7 @@ public class SecurityConfig {
                         // 허용 경로
                         .requestMatchers(
                                 "/api/users/**",
+                                "/api/teams/**",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/error"

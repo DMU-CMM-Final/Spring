@@ -1,5 +1,6 @@
 package com.cmm.spring.controller;
 
+import com.cmm.spring.dto.InviteMessage;
 import com.cmm.spring.dto.TeamCreateRequest;
 import com.cmm.spring.entity.Team;
 import com.cmm.spring.service.TeamService;
@@ -19,4 +20,10 @@ public class TeamController {
     public Team createTeam(@RequestBody TeamCreateRequest team) {
         return teamService.createTeam(team.getTname(), team.getUid());
     }
+
+    @PostMapping("/message")
+    public Boolean inviteTeam(@RequestBody InviteMessage inviteMessage) {
+        return teamService.inviteTeam(inviteMessage.getUid(), inviteMessage.getTid());
+    }
+
 }

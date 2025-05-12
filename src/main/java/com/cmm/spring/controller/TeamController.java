@@ -26,4 +26,6 @@ public class TeamController {
         return teamService.inviteTeam(inviteMessage.getUid(), inviteMessage.getTid());
     }
 
+
+
 }

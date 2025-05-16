@@ -6,10 +6,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @IdClass(TeamMemId.class)
 public class TeamMem {
     @Id

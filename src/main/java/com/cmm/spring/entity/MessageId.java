@@ -2,12 +2,14 @@ package com.cmm.spring.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
 @Setter
+@ToString
 public class MessageId implements Serializable {
     private String uid;
     private Integer tid;

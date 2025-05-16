@@ -17,7 +17,7 @@ public class TeamController {
     private TeamService teamService;
 
     @PostMapping("/create")
-    public Team createTeam(@RequestBody TeamCreateRequest team) {
+    public Integer createTeam(@RequestBody TeamCreateRequest team) {
         return teamService.createTeam(team.getTname(), team.getUid());
     }
 

@@ -15,4 +15,6 @@ public class Message {
     @Id
     @Column(name="tId")
     private Integer tid;
+
+    private Integer content;
 }

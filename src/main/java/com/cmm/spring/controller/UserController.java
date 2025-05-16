@@ -1,11 +1,13 @@
 package com.cmm.spring.controller;
 
-import com.cmm.spring.dto.LoginRequest;
+import com.cmm.spring.dto.*;
 import com.cmm.spring.entity.User;
 import com.cmm.spring.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -30,4 +32,19 @@ public class UserController {
     public String login(@RequestBody LoginRequest lg) {
         return userService.login(lg);
     }
+
+    @PostMapping("/message")
+    // uid, tid 받아서 message 조회, t_name, 팀장아이디 수락->true 거절->false
+    // true 면 team_mem 에 추가, message 삭제
+    // false 면 message 삭제, team 팀장 message 보내기 content=2
+    public List<UserMessage> message(@RequestBody UidRequest uid) {
+        return userService.myMessage(uid.getUid());
+    }
+
+    @PostMapping("/message/choice")
+    public void messageChoice(@RequestBody ChoiceMessage choiceMessage) {
+        userService.updateMessage(choiceMessage);
+    }
+
+
 }

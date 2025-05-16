@@ -47,6 +47,7 @@ public class TeamService {
             Message message = new Message();
             message.setUid(uid);
             message.setTid(tid);
+            message.setContent(1);
             messageRepository.save(message);
 
             return true;

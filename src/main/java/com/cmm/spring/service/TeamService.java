@@ -1,6 +1,8 @@
 package com.cmm.spring.service;
 
+import com.cmm.spring.dto.TeamList;
 import com.cmm.spring.entity.Message;
+import com.cmm.spring.entity.MessageId;
 import com.cmm.spring.entity.Team;
 import com.cmm.spring.entity.TeamMem;
 import com.cmm.spring.repository.MessageRepository;
@@ -9,6 +11,9 @@ import com.cmm.spring.repository.TeamRepository;
 import com.cmm.spring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TeamService {
@@ -54,6 +59,36 @@ public class TeamService {
         } else {
             return false;
         }
+
+    }
+
+    public void deleteMem(Integer tid, String uid){
+        MessageId mId = new MessageId(uid,tid);
+        Message m = messageRepository.findById(mId).orElse(null);
+        if (m!=null){
+            messageRepository.delete(m);
+            System.out.println(m.getUid()+" 초대 취소");
+        }
+        System.out.println("팀원 조회 실패");
+    }
+
+    public List<TeamList> myTeamList(String uid){
+        List<TeamList> teamList = new ArrayList<>();
+        List<TeamMem> teamMem = teamMemRepository.findByUid(uid);
+        for (TeamMem t : teamMem) {
+            Team team = teamRepository.findById(t.getTid()).orElse(null);
+            if (team!=null){
+                TeamList tl = new TeamList();
+                tl.setTid(team.getTId());
+                tl.setTname(team.getTName());
+                teamList.add(tl);
+            } else {
+                System.out.println("조회된 팀 없음");
+            }
+        }
+        System.out.println(teamList.size()+"개의 팀 보유");
+        return teamList;
+
 
     }
 

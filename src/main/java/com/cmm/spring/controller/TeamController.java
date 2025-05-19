@@ -6,6 +6,7 @@ import com.cmm.spring.dto.TeamList;
 import com.cmm.spring.dto.UidRequest;
 import com.cmm.spring.entity.MessageId;
 import com.cmm.spring.entity.Team;
+import com.cmm.spring.entity.TeamMemId;
 import com.cmm.spring.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,12 @@ public class TeamController {
 
     @PostMapping("/message/delete")
     public void deleteTeam(@RequestBody MessageId messageId) {
-        teamService.deleteMem(messageId.getTid(), messageId.getUid());
+        teamService.cancelMem(messageId.getTid(), messageId.getUid());
+    }
+
+    @PostMapping("/mem/delete")
+    public void deleteMem(@RequestBody TeamMemId id) {
+        teamService.deleteMember(id.getUid(),id.getTid());
     }
 
     @PostMapping("/list")

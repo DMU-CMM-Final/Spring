@@ -1,10 +1,7 @@
 package com.cmm.spring.service;
 
 import com.cmm.spring.dto.TeamList;
-import com.cmm.spring.entity.Message;
-import com.cmm.spring.entity.MessageId;
-import com.cmm.spring.entity.Team;
-import com.cmm.spring.entity.TeamMem;
+import com.cmm.spring.entity.*;
 import com.cmm.spring.repository.MessageRepository;
 import com.cmm.spring.repository.TeamMemRepository;
 import com.cmm.spring.repository.TeamRepository;
@@ -62,7 +59,7 @@ public class TeamService {
 
     }
 
-    public void deleteMem(Integer tid, String uid){
+    public void cancelMem(Integer tid, String uid){
         MessageId mId = new MessageId(uid,tid);
         Message m = messageRepository.findById(mId).orElse(null);
         if (m!=null){
@@ -70,6 +67,15 @@ public class TeamService {
             System.out.println(m.getUid()+" 초대 취소");
         }
         System.out.println("팀원 조회 실패");
+    }
+
+    public void deleteMember(String uid, Integer tid){
+        TeamMemId memId = new TeamMemId();
+        memId.setTid(tid);
+        memId.setUid(uid);
+        TeamMem mem = teamMemRepository.findById(memId).orElse(null);
+        teamMemRepository.delete(mem);
+        System.out.println(mem.getUid()+" 팀원 삭제");
     }
 
     public List<TeamList> myTeamList(String uid){

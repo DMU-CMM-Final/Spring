@@ -5,7 +5,6 @@ import com.cmm.spring.dto.TeamCreateRequest;
 import com.cmm.spring.dto.TeamList;
 import com.cmm.spring.dto.UidRequest;
 import com.cmm.spring.entity.MessageId;
-import com.cmm.spring.entity.Team;
 import com.cmm.spring.entity.TeamMemId;
 import com.cmm.spring.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;

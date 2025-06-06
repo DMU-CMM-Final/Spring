@@ -25,6 +25,8 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/users/**",
                                 "/api/teams/**",
+                                "/kakao/callback",
+                                "/naver/callback",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/error"

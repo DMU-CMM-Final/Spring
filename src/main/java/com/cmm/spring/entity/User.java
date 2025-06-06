@@ -1,22 +1,25 @@
 package com.cmm.spring.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="Users")
 public class User {
     @Id
-    @Column(name = "uId", length = 20)
-    private String uid;
+    @Column(name = "uId", length = 100)
+    public String uid;
 
     @Column(name = "uName", nullable = false, length = 20)
-    private String uname;
+    public String uname;
 
-    @Column(name = "uPassword", nullable = false, length = 20)
-    private String upassword;
-
-    @Column(name = "uTel", length = 20)
-    private String utel;
+    @Column(name = "uPassword", length = 20)
+    public String upassword;
 }

@@ -65,8 +65,7 @@ public class TeamService {
         if (m!=null){
             messageRepository.delete(m);
             System.out.println(m.getUid()+" 초대 취소");
-        }
-        System.out.println("팀원 조회 실패");
+        } else System.out.println("팀원 조회 실패");
     }
 
     public void deleteMember(String uid, Integer tid){

@@ -67,6 +67,7 @@ public class UserService {
             Team team = teamRepository.findById(tid)
                     .orElseThrow(() -> new RuntimeException("Team not found"));
             UserMessage userM = new UserMessage();
+            userM.setTid(tid);
             userM.setTname(team.getTName());
             userM.setUid(team.getUId());
             userM.setContent(m.getContent());

@@ -82,8 +82,8 @@ public class UserService {
         MessageId messageId = new MessageId(message.getUid(),message.getTid());
         messageRepository.deleteById(messageId);
         System.out.println(messageId.toString()+" 삭제");
-
-        if (message.getBool()){
+        System.out.println("메세지 수락/거절 : " + message.isBool());
+        if (message.isBool()){
             TeamMem teamMem = new TeamMem();
             teamMem.setTid(message.getTid());
             teamMem.setUid(message.getUid());
